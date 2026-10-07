@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-Hans" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>DNA 数据存储（字幕版）｜如何把信息写进生命分子，从二进制到碱基序列 · AI 术语表 ｜ How to store data on DNA？</title>
+<meta name="description" content="DNA 数据存储（字幕版）｜如何把信息写进生命分子，从二进制到碱基序列 · AI 术语表 — 逐句点读、中英对照、AI 术语标注">
+<style>
+:root{
+  --bg:#fbfbfd; --fg:#1d1d1f; --muted:#6e6e73; --card:#ffffff; --line:#e5e5ea;
+  --accent:#0a84ff; --accent-soft:#eaf3ff; --hl:#fff3bf; --hl-line:#e8b931;
+  --term-bg:#f3ecff; --term-line:#8b5cf6; --active:#fef6c7;
+  --radius:14px; --maxw:880px;
+}
+html[data-theme="dark"]{
+  --bg:#111113; --fg:#e8e8ea; --muted:#98989d; --card:#1b1b1e; --line:#2c2c30;
+  --accent:#4da3ff; --accent-soft:#16283d; --hl:#5a4a00; --hl-line:#d9a800;
+  --term-bg:#241a3a; --term-line:#a78bfa; --active:#3a3200;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased;
+}
+body[data-font="s"]{font-size:15px}
+body[data-font="l"]{font-size:18px}
+body[data-font="xl"]{font-size:20px}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ---------- top bar ---------- */
+.topbar{
+  position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(14px);
+  background:color-mix(in srgb, var(--bg) 82%, transparent);
+  border-bottom:1px solid var(--line);
+}
+.topbar-in{max-width:var(--maxw); margin:0 auto; padding:8px 16px; display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.brand{font-weight:650; font-size:.92em; letter-spacing:.2px; white-space:nowrap}
+.brand small{display:block; font-weight:400; color:var(--muted); font-size:.78em; letter-spacing:0}
+.bar-spacer{flex:1}
+.btn{
+  appearance:none; border:1px solid var(--line); background:var(--card); color:var(--fg);
+  border-radius:9px; padding:5px 10px; font-size:.82em; cursor:pointer; line-height:1.4;
+  font-family:inherit; transition:background .15s,border-color .15s;
+}
+.btn:hover{border-color:var(--accent); color:var(--accent)}
+.btn.on{background:var(--accent); border-color:var(--accent); color:#fff}
+.btn-group{display:flex; gap:6px; align-items:center}
+
+/* ---------- progress ---------- */
+.progress{height:3px; background:var(--line); position:relative}
+.progress i{display:block; height:100%; width:0; background:var(--accent); transition:width .2s}
+
+/* ---------- hero ---------- */
+main{max-width:var(--maxw); margin:0 auto; padding:26px 18px 120px}
+.hero{display:flex; gap:18px; align-items:flex-start; margin-bottom:8px}
+.hero img{width:190px; flex-shrink:0; border-radius:var(--radius); box-shadow:0 3px 14px rgba(0,0,0,.13)}
+.hero h1{font-size:1.42em; line-height:1.32; margin:0 0 8px; font-weight:650}
+.hero h1 .zh{display:block; font-size:.72em; color:var(--muted); font-weight:500; margin-top:6px}
+.meta{display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 0}
+.chip{background:var(--card); border:1px solid var(--line); border-radius:999px; padding:3px 11px; font-size:.78em; color:var(--muted)}
+.chip b{color:var(--fg); font-weight:600}
+.summary{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px; margin:20px 0}
+.summary h2{margin:0 0 10px; font-size:.86em; letter-spacing:.6px; text-transform:uppercase; color:var(--muted); font-weight:600}
+.summary p{margin:0 0 10px; font-size:.92em}
+.summary p:last-child{margin-bottom:0}
+.summary .en{color:var(--muted); font-size:.86em}
+
+/* ---------- toc ---------- */
+.toc{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:14px 18px; margin:18px 0}
+.toc h2{margin:0 0 8px; font-size:.86em; letter-spacing:.6px; text-transform:uppercase; color:var(--muted); font-weight:600}
+.toc ol{margin:0; padding-left:22px; columns:2; column-gap:26px}
+.toc li{margin:3px 0; font-size:.9em; break-inside:avoid}
+.toc a{color:var(--fg)}
+.toc a:hover{color:var(--accent)}
+.toc .t{color:var(--muted); font-size:.85em; margin-left:6px}
+
+/* ---------- toolbar ---------- */
+.toolbar{
+  display:flex; flex-wrap:wrap; gap:8px; align-items:center;
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  padding:11px 14px; margin:18px 0; position:sticky; top:52px; z-index:40;
+}
+.toolbar input[type=search]{
+  flex:1; min-width:150px; padding:6px 11px; border:1px solid var(--line); border-radius:9px;
+  background:var(--bg); color:var(--fg); font-family:inherit; font-size:.85em;
+}
+.toolbar input[type=search]:focus{outline:none; border-color:var(--accent)}
+.speed{display:flex; align-items:center; gap:5px; font-size:.8em; color:var(--muted)}
+select{background:var(--card); color:var(--fg); border:1px solid var(--line); border-radius:8px; padding:4px 7px; font-family:inherit; font-size:.9em}
+
+/* ---------- transcript ---------- */
+.chapter{margin:38px 0 0; padding-top:8px}
+.chapter h2{
+  font-size:1.06em; font-weight:650; margin:0 0 4px; padding:8px 0 8px 13px;
+  border-left:4px solid var(--accent); scroll-margin-top:110px;
+}
+.chapter .ct{color:var(--muted); font-size:.8em; font-weight:400; margin-left:9px}
+.row{display:flex; gap:12px; align-items:flex-start; padding:4px 0; border-radius:10px}
+.row[hidden]{display:none}
+.row:hover{background:color-mix(in srgb, var(--accent) 5%, transparent)}
+.row.active{background:var(--active); box-shadow:inset 3px 0 0 var(--hl-line)}
+.row.hit{background:var(--accent-soft)}
+.main-col{flex:1; min-width:0}
+.sent{display:flex; gap:9px; align-items:baseline; padding:6px 8px; border-radius:8px; cursor:pointer}
+.sent:hover .play{color:var(--accent); opacity:1}
+.play{
+  flex-shrink:0; width:26px;height:26px; border:1px solid var(--line); background:var(--card);
+  border-radius:50%; cursor:pointer; color:var(--muted); font-size:10px; line-height:1;
+  display:inline-flex; align-items:center; justify-content:center; padding:0;
+  transform:translateY(3px); transition:all .15s;
+}
+.play:hover{border-color:var(--accent); color:var(--accent)}
+.row.active .play{background:var(--hl-line); border-color:var(--hl-line); color:#fff}
+.txt{flex:1; min-width:0}
+.en{display:block}
+.zh{display:block; color:var(--muted); font-size:.9em; margin-top:2px}
+body[data-zh="off"] .zh{display:none}
+.ts{font-variant-numeric:tabular-nums; color:var(--muted); font-size:.76em; margin-right:2px; user-select:none}
+mark{
+  background:var(--hl); color:inherit; padding:1px 3px; border-radius:4px; cursor:help;
+  border-bottom:1.5px dotted var(--hl-line);
+}
+mark.term{background:var(--term-bg); border-bottom-color:var(--term-line)}
+.side{
+  width:210px; flex-shrink:0; background:var(--term-bg); border-left:3px solid var(--term-line);
+  border-radius:8px; padding:7px 11px; font-size:.78em; line-height:1.6; color:var(--fg);
+}
+.side .w{font-weight:650}
+.side .ph{color:var(--muted); font-size:.92em}
+.side .df{color:var(--muted); display:block; margin-top:2px}
+.side .cat{
+  display:inline-block; font-size:.86em; padding:0 6px; border-radius:6px;
+  background:var(--term-line); color:#fff; margin-top:4px;
+}
+.tooltip{
+  position:fixed; z-index:100; max-width:330px; background:var(--card); color:var(--fg);
+  border:1px solid var(--line); border-radius:11px; padding:11px 14px; font-size:.85em;
+  box-shadow:0 8px 30px rgba(0,0,0,.2); pointer-events:none; opacity:0; transition:opacity .13s;
+}
+.tooltip.show{opacity:1}
+.tooltip .w{font-weight:650; font-size:1.06em}
+.tooltip .ph{color:var(--muted)}
+.tooltip .df{display:block; margin-top:6px; line-height:1.6}
+
+/* ---------- vocab page bits ---------- */
+.vgroup{margin:26px 0}
+.vgroup h2{font-size:1em; border-left:4px solid var(--term-line); padding-left:11px; margin-bottom:10px}
+.vlist{display:grid; grid-template-columns:repeat(auto-fill,minmax(255px,1fr)); gap:9px}
+.vcard{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:10px 13px}
+.vcard .w{font-weight:650}
+.vcard .ph{color:var(--muted); font-size:.85em}
+.vcard .df{display:block; color:var(--muted); font-size:.85em; margin-top:3px; line-height:1.55}
+.vcard .cn{color:var(--accent); font-size:.92em}
+
+/* ---------- misc ---------- */
+.kv{position:fixed; right:16px; bottom:16px; z-index:60; display:flex; flex-direction:column; gap:7px}
+.kv .btn{box-shadow:0 4px 14px rgba(0,0,0,.13)}
+.top{font-size:.8em}
+.note{color:var(--muted); font-size:.8em; text-align:center; margin-top:50px; line-height:1.7}
+@media (max-width:720px){
+  .hero{flex-direction:column}
+  .hero img{width:100%; max-width:290px}
+  .toc ol{columns:1}
+  .side{width:auto; margin:4px 0 8px 34px; border-left:none; border-top:3px solid var(--term-line)}
+  .row{flex-direction:column; gap:0}
+}
+@media print{
+  .topbar,.toolbar,.kv,.progress{display:none}
+  body{background:#fff; font-size:11pt}
+  .row{break-inside:avoid}
+  .side{border-left:2px solid #999}
+}
+</style>
+</head>
+<body data-font="m" data-zh="on">
+
+<div class="topbar">
+  <div class="topbar-in">
+    <div class="brand">DNA 数据存储（字幕版）｜如何把信息写进生命分子，从二进制到碱基序列 · AI 术语表<small>AI 术语表</small></div>
+    <div class="bar-spacer"></div>
+    <div class="btn-group">
+      <button class="btn" id="b-zh" title="显示/隐藏中文 (T)">中文</button>
+      <button class="btn" id="b-auto" title="连播开关 (C)">连播</button>
+      <button class="btn" id="b-theme" title="深浅色">◐</button>
+      <button class="btn" id="b-font" title="字号">A</button>
+      <a class="btn" href="vocab.html" title="AI 术语表">术语表</a>
+    </div>
+  </div>
+  <div class="progress"><i id="prog"></i></div>
+</div>
+
+<main>
+  <section class="hero">
+    <img src="thumbnail.jpg" alt="课程缩略图">
+    <div>
+      <h1>How to store data on DNA？<span class="zh">DNA 数据存储（字幕版）｜如何把信息写进生命分子，从二进制到碱基序列 · AI 术语表</span></h1>
+      <div class="meta">
+        <span class="chip">时长 <b>11:50</b></span>
+        <span class="chip">句数 <b>173</b></span>
+        <span class="chip">术语 <b>1</b></span>
+        <span class="chip">章节 <b>7</b></span>
+        <span class="chip" id="resume-chip" hidden>上次听到 <b id="resume-t">--:--</b></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="summary">
+    <h2>摘要</h2>
+    <p>本讲出现的 1 个词汇，按 5 类整理。</p>
+    <p class="en">1 vocabulary items used in this lecture.</p>
+  </section>
+
+  <nav class="toc" style="display:none">
+    <h2>章节目录</h2>
+    <ol></ol>
+  </nav>
+
+  <div class="toolbar" style="display:none">
+    <input type="search" id="q" placeholder="搜索英文、中文或术语…">
+    <span class="speed">速度
+      <select id="rate">
+        <option value="0.75">0.75×</option>
+        <option value="1" selected>1×</option>
+        <option value="1.25">1.25×</option>
+        <option value="1.5">1.5×</option>
+        <option value="2">2×</option>
+      </select>
+    </span>
+    <span class="speed"><span id="hits">就绪</span></span>
+  </div>
+
+  <audio id="player" preload="none"></audio>
+  <article id="transcript"><section class="vgroup" data-cat="神经网络基础"><h2>神经网络基础 <span class="ct">1 条</span></h2><div class="vlist"><div class="vcard"><span class="w">instance</span> <span class="ph">['instәns]</span><span class="cn">实例</span><span class="df">与样本 的含义相同。</span></div></div></section><div class="toolbar" id="vfilter"><a class="btn" href="index.html">← 返回文稿</a><button class="btn on" data-f="*">全部 1</button><button class="btn" data-f="神经网络基础">神经网络基础 1</button></div><script>(function(){var b=document.getElementById('vfilter');b.addEventListener('click',function(e){var t=e.target.closest('button[data-f]');if(!t)return;var f=t.getAttribute('data-f');b.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===t);});document.querySelectorAll('.vgroup').forEach(function(g){g.hidden=(f!=='*'&&g.getAttribute('data-cat')!==f);});});})();</script></article>
+
+  <p class="note">
+    点击任意句子从该处播放 · <kbd>空格</kbd> 播放/暂停 · <kbd>T</kbd> 中文 · <kbd>C</kbd> 连播 ·
+    <kbd>↑</kbd><kbd>↓</kbd> 上下句 · <kbd>Esc</kbd> 停止<br>
+    字幕由 ASR 转录并经 AI 校正重译，术语释义仅供参考。
+  </p>
+</main>
+
+<div class="kv">
+  <button class="btn top" id="b-top" title="回到顶部">↑</button>
+</div>
+<div class="tooltip" id="tip"></div>
+
+<script>
+var DATA=[];var TERMS={};
+</script>
+<script>
+
+</script>
+</body>
+</html>
